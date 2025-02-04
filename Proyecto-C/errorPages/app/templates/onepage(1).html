@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="col">
+            <div class="row">
+                <div class="col-6">
+                    <h1>Bienvenidos a mi OnePage</h1>
+                    <p>Está página funciona cargando elementos con el evento scroll</p>
+
+                </div>
+                <div class="col-6">
+                    <img src="https://luisgabrielvelazquez.com/wp-content/uploads/2024/02/asi-es-el-cuerpazo-en-cuarentena-que-luce-chayanne-a-sus-51-anos.jpg" alt="esto es una imagen" class="img-fluid">
+                </div>
+                <br>
+                <div class="row" id="tarjetas">
+                    <!-- aquí voy a cargar mis cards -->
+                     <div class="card col-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Título de la tarjeta por defecto</h5>
+                            <p class="card-tex"> Texto por defecto de la tarjeta.
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, aspernatur ratione. Ipsum minus, ut iusto eveniet aut rerum, necessitatibus quo quasi nulla debitis vitae officiis dicta nisi sit reprehenderit neque?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates facere beatae eaque, non magnam deleniti commodi nobis maiores amet nemo sapiente voluptas repudiandae corrupti libero, iure quaerat totam? Assumenda, debitis!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut harum reprehenderit perspiciatis optio porro perferendis sequi est laborum ad libero debitis doloribus, officia voluptas dolorem placeat quae labore saepe ut.
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis, expedita! Neque, ipsam! Adipisci laborum doloribus ea consequuntur corporis aut iure officia nisi minus asperiores quas commodi, error necessitatibus ducimus omnis!
+                            </p>
+                        </div>
+
+                     </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        var i =1;
+
+        function loadCards(){
+          console.log("Se detecto el final de la página");
+          for (let index = 0; index < 5; index++) {
+           
+            if(i>=100){
+                break;
+            }
+             var objeto ={
+                title:'Cards numero '+ i,
+                text:'Texto dummy de la card: '+i
+             }
+             i++;
+
+             var card =document.createElement('div')
+             card.setAttribute('class','card col-4')
+
+             var body =document.createElement('div')
+             body.setAttribute('class','card-body')
+             
+             var h5 =document.createElement('h5');
+             body.setAttribute('class','card-title');
+             h5.innerHTML=objeto.title;
+
+             var p =document.createElement('p');
+             //funcion
+             body.setAttribute('class','card-body');
+             //atributo
+             p.innerHTML=objeto.text;
+
+             body.appendChild(h5);
+             body.appendChild(p);
+             card.appendChild(body);    
+
+             document.querySelector('#tarjetas').appendChild(card);
+            }
+
+        }
+        window.addEventListener('scroll',()=>{
+            
+            if((window.innerHeight + window.scrollY)>= document.body.offsetHeight){
+                loadCards();
+            }
+        })
+
+    </script>
+</body>
+</html>
